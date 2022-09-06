@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">QuizApp</string>
+
+    <string name="txt_quiz_app">Quiz App!</string>
+    <string name="txt_welcome">Welcome</string>
+    <string name="txt_enter_name">Please enter your name.</string>
+    <string name="txt_example_given_name">e.g. Koolunkle</string>
+    <string name="txt_start">Start</string>
 </resources>
