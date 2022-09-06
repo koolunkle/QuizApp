@@ -16,4 +16,5 @@
     <string name="txt_result">Result</string>
     <string name="iv_trophy">Trophy Image</string>
     <string name="txt_congratulation">Hey, Congratulations!</string>
+    <string name="txt_score">Your score is %d out of %d</string>
 </resources>

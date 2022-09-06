@@ -1,11 +1,11 @@
 package com.udemy.quizapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -21,9 +21,15 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mSelectedOptionPosition: Int = 0
 
+    private var mUserName: String? = null
+
+    private var mCorrectAnswers: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_question)
+
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
 
         binding.tvFirstOption.setOnClickListener(this)
         binding.tvSecondOption.setOnClickListener(this)
@@ -124,8 +130,12 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                         }
 
                         else -> {
-                            Toast.makeText(this, "You made it to the end", Toast.LENGTH_SHORT)
-                                .show()
+                            val intent = Intent(this, ResultActivity::class.java)
+                            intent.putExtra(Constants.USER_NAME, mUserName)
+                            intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                            intent.putExtra(Constants.TOTAL_QUESTION, mQuestionList!!.size)
+                            startActivity(intent)
+                            finish()
                         }
                     }
                 } else {
@@ -133,6 +143,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
                     if (question!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    } else {
+                        mCorrectAnswers++
                     }
 
                     answerView(question.correctAnswer, R.drawable.correct_option_border_bg)

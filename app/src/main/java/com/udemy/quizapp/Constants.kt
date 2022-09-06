@@ -2,6 +2,12 @@ package com.udemy.quizapp
 
 object Constants {
 
+    const val USER_NAME: String = "user_name"
+
+    const val TOTAL_QUESTION: String = "total_question"
+
+    const val CORRECT_ANSWERS: String = "correct_answer"
+
     fun getQuestion(): ArrayList<Question> {
         val questionsList = ArrayList<Question>()
 
