@@ -10,4 +10,6 @@
     <string name="iv_flag">Flag Image</string>
     <string name="btn_submit">Submit</string>
     <string name="tv_progress">%d / %d</string>
+    <string name="txt_submit">Submit</string>
+    <string name="txt_finish">Finish</string>
 </resources>
