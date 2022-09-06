@@ -8,4 +8,6 @@
     <string name="txt_start">Start</string>
     <string name="txt_question">What Country does this flag belong to?</string>
     <string name="iv_flag">Flag Image</string>
+    <string name="btn_submit">Submit</string>
+    <string name="tv_progress">%d / %d</string>
 </resources>
