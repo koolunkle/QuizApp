@@ -5,6 +5,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
@@ -37,6 +38,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun getQuestionList() {
+        defaultOptionView()
+
         val question: Question = mQuestionList!![mCurrentPosition - 1]
 
         binding.ivFlag.setImageResource(question.image)
@@ -112,7 +115,56 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.btn_submit -> {
-                // TODO "implement btn_submit"
+                if (mSelectedOptionPosition == 0) {
+                    mCurrentPosition++
+
+                    when {
+                        mCurrentPosition <= mQuestionList!!.size -> {
+                            getQuestionList()
+                        }
+
+                        else -> {
+                            Toast.makeText(this, "You made it to the end", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                } else {
+                    val question = mQuestionList?.get(mCurrentPosition - 1)
+
+                    if (question!!.correctAnswer != mSelectedOptionPosition) {
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }
+
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if (mCurrentPosition == mQuestionList!!.size) {
+                        binding.btnSubmit.text = resources.getString(R.string.txt_finish)
+                    } else {
+                        binding.btnSubmit.text = resources.getString(R.string.txt_next_question)
+                    }
+
+                    mSelectedOptionPosition = 0
+                }
+            }
+        }
+    }
+
+    private fun answerView(answer: Int, drawableView: Int) {
+        when (answer) {
+            1 -> {
+                binding.tvFirstOption.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            2 -> {
+                binding.tvSecondOption.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            3 -> {
+                binding.tvThirdOption.background = ContextCompat.getDrawable(this, drawableView)
+            }
+
+            4 -> {
+                binding.tvFourthOption.background = ContextCompat.getDrawable(this, drawableView)
             }
         }
     }

@@ -12,4 +12,5 @@
     <string name="tv_progress">%d / %d</string>
     <string name="txt_submit">Submit</string>
     <string name="txt_finish">Finish</string>
+    <string name="txt_next_question">GO TO NEXT QUESTION</string>
 </resources>
