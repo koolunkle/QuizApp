@@ -6,4 +6,6 @@
     <string name="txt_enter_name">Please enter your name.</string>
     <string name="txt_example_given_name">e.g. Koolunkle</string>
     <string name="txt_start">Start</string>
+    <string name="txt_question">What Country does this flag belong to?</string>
+    <string name="iv_flag">Flag Image</string>
 </resources>
